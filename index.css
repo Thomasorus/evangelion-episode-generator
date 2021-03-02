@@ -1,0 +1,193 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box
+}
+
+blockquote,
+body,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0
+}
+
+ul[role='list'],
+ol[role='list'] {
+    list-style: none
+}
+
+html:focus-within {
+    scroll-behavior: smooth
+}
+
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5
+}
+
+a:not([class]) {
+    text-decoration-skip-ink: auto
+}
+
+img,
+picture {
+    max-width: 100%;
+    display: block
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto
+    }
+
+    *,
+    *::after,
+    *::before {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important
+    }
+}
+
+:root {
+    --background: black;
+    --text: white;
+
+    --ratio: 1.5;
+    --s-5: calc(var(--s-4) / var(--ratio));
+    --s-4: calc(var(--s-3) / var(--ratio));
+    --s-3: calc(var(--s-2) / var(--ratio));
+    --s-2: calc(var(--s-1) / var(--ratio));
+    --s-1: calc(var(--s0) / var(--ratio));
+    --s0: 1rem;
+    --s1: calc(var(--s0) * var(--ratio));
+    --s2: calc(var(--s1) * var(--ratio));
+    --s3: calc(var(--s2) * var(--ratio));
+    --s4: calc(var(--s3) * var(--ratio));
+    --s5: calc(var(--s4) * var(--ratio));
+    font-size: calc(1rem + 0.5vw);
+
+}
+
+@font-face {
+    font-family: 'TimesNRCondensedBold';
+    src: url('./fonts/TimesNRCondensedBold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TimesNRCondensed';
+    src: url('./fonts/TimesNRCondensed.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TimesNRCondensedItalic';
+    src: url('./fonts/TimesNRCondensedItalic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Helvetica-Condensed-Bold';
+    src: url('./fonts/Helvetica-Condensed-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Century-Schoolbook';
+    src: url('./fonts/Century-Schoolbook.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: "TimesNRCondensed";
+
+}
+
+article {
+    max-width: 60ch;
+    margin: var(--s0) auto;
+}
+
+section {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+h1,
+h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+h1 {
+    font-family: "Century-Schoolbook";
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: "Helvetica-Condensed-Bold";
+    text-transform: uppercase;
+}
+
+strong,
+b {
+    font-family: "TimesNRCondensedBold";
+}
+
+em,
+i,
+cite {
+    font-family: "TimesNRCondensedItalic";
+}
+
+
+.flow-0>*+* {
+    margin-top: var(--s0);
+}
+
+.flow-1>*+* {
+    margin-top: var(--s1);
+}
+
+.flow-2>*+* {
+    margin-top: var(--s2);
+}
+
+.label-input-flow {
+    display: flex;
+    flex-direction: column;
+}

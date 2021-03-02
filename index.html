@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evangelion.css</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body class="flow-0">
+    <main>
+        <article class="flow-0">
+            <h1>Evangelion Episode Card Generator</h1>
+            <p><em>Please note this is a complete beta that probably breaks and lacks options.</em></p>
+            <form action="" class="flow-0">
+                <div class="label-input-flow">
+                    <label for="title">Title of your show</label>
+                    <input type="text" name="title" id="title" value="Neon Genesis Evangelion">
+                </div>
+                <div class="label-input-flow">
+                    <label for="episode">Episode number</label>
+                    <input type="text" name="episode" id="episode" value="Episode: 1">
+                </div>
+                <div class="label-input-flow">
+                    <label for="episodeName">Name of the episode</label>
+                    <input type="text" name="episodeName" id="episodeName" value="Get in the robot Shinji">
+                </div>
+                <button id="generate">Generate</button>
+            </form>
+        </article>
+
+        <section aria-label="Generated episode card" id="area">
+
+        </section>
+
+    </main>
+    <footer>
+        <svg width="0" height="0">
+            <filter id="chromatic">
+                <feColorMatrix type="matrix" result="red_" values="4 0 0 0 0
+                0 0 0 0 0 
+                0 0 0 0 0 
+                0 0 0 1 0" />
+                <feOffset in="red_" dx="1" dy="0" result="red" />
+                <feColorMatrix type="matrix" in="SourceGraphic" result="blue_" values="0 0 0 0 0
+                0 3 0 0 0 
+                0 0 10 0 0 
+                0 0 0 1 0" />
+                <feOffset in="blue_" dx="-1" dy="0" result="blue" />
+                <feBlend mode="screen" in="red" in2="blue" />
+            </filter>
+        </svg>
+    </footer>
+    <script>
+        document.querySelector('#generate').addEventListener('click', function (e) {
+            e.preventDefault();
+            const oldImage = document.querySelector('img');
+            if (oldImage) {
+                oldImage.remove();
+            }
+            ctx = document.createElement('canvas');
+            ctx.setAttribute("width", 640);
+            ctx.setAttribute("height", 480);
+            ctx.setAttribute('id', "canvas");
+
+
+            drawTitle(ctx.getContext('2d'));
+            drawEpisode(ctx.getContext('2d'));
+            drawEpisodeName(ctx.getContext('2d'));
+
+            const image = convertCanvasToImage(ctx);
+
+            const area = document.querySelector("#area");
+            area.appendChild(image);
+
+        });
+
+        function drawTitle(ctx) {
+            const title = document.querySelector("#title").value;
+            ctx.fillStyle = 'white';
+            ctx.filter = 'blur(.3px) url(#chromatic)';
+            const x = 20;
+            const y = 80;
+            const lineheight = 60;
+            const fontSize = 60;
+            const split = title.split(' ');
+            for (let i = 0; i < split.length; i++) {
+                console.log(i, split.length)
+                if (i + 1 === split.length) {
+                    ctx.font = `80px "Century-Schoolbook"`;
+                    ctx.fillText(split[i].toUpperCase(), x, y + (i * lineheight) + 15);
+                } else {
+                    ctx.font = `60px "Century-Schoolbook"`;
+                    ctx.fillText(split[i].toUpperCase(), x, y + (i * lineheight));
+                }
+            }
+            return ctx
+        }
+
+        function drawEpisode(ctx) {
+            const title = document.querySelector("#episode").value;
+            ctx.fillStyle = 'white';
+            ctx.filter = 'blur(.3px) url(#chromatic)';
+            ctx.font = '50px "Helvetica-Condensed-Bold"';
+            ctx.fillText(title.toUpperCase(), 20, 360);
+            return ctx
+        }
+
+        function drawEpisodeName(ctx) {
+            const title = document.querySelector("#episodeName").value;
+            ctx.fillStyle = 'white';
+            ctx.filter = 'blur(.3px) url(#chromatic)';
+            ctx.font = '40px "TimesNRCondensedBold"';
+            ctx.textAlign = "right";
+            ctx.fillText(title, 620, 450);
+            return ctx
+        }
+
+        function convertCanvasToImage(ctx) {
+            let image = new Image();
+            image.src = ctx.toDataURL('image/jpeg', 1.0);
+            return image;
+        }
+    </script>
+</body>
+
+</html>
