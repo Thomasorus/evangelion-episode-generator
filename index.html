@@ -15,6 +15,7 @@
             <h1>Evangelion Episode Generator</h1>
             <p><em>Please note this is a complete beta that probably breaks and lacks options.</em></p>
             <p><strong>If the fonts don't apply correctly, refresh the page!</strong></p>
+            <h2>Please fill this</h2>
             <form action="" class="flow-0">
                 <div class="label-input-flow">
                     <label for="title">Title of your show</label>
@@ -29,6 +30,8 @@
                     <input type="text" name="episodeName" id="episodeName" value="Get in the robot Shinji">
                 </div>
                 <button id="generate">Generate</button>
+                <br>
+                <small>Click on the image to open it on a new page and save it.</small>
             </form>
         </article>
 
@@ -124,6 +127,7 @@
             function convertCanvasToImage(ctx) {
                 let image = new Image();
                 image.src = ctx.toDataURL('image/jpeg', 1.0);
+                image.setAttribute('onClick', "window.open(this.src)")
                 return image;
             }
         })
