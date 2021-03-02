@@ -2,5 +2,4 @@
 
 Because why not and get in the robot Shinji.
 
-Source: 
-- https://fontsinuse.com/uses/28760/neon-genesis-evangelion
+More information about [the aesthetics of evangelion](https://fontsinuse.com/uses/28760/neon-genesis-evangelion).
