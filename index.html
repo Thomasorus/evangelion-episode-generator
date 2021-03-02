@@ -85,8 +85,7 @@
 
             function drawTitle(ctx) {
                 const title = document.querySelector("#title").value;
-                ctx.fillStyle = 'white';
-                ctx.filter = 'blur(.3px) url(#chromatic)';
+                
                 const x = 20;
                 const y = 80;
                 const lineheight = 60;
@@ -96,10 +95,32 @@
                     console.log(i, split.length)
                     if (i + 1 === split.length) {
                         ctx.font = `80px "Century-Schoolbook"`;
+                        ctx.fillStyle = 'cyan';
+                        ctx.fillText(split[i].toUpperCase(), x + 0.7, y + (i * lineheight) + 15);
+                        ctx.fillStyle = 'magenta';
+                        ctx.fillText(split[i].toUpperCase(), x - 0.7, y + (i * lineheight) + 15);
+                        ctx.fillStyle = 'white';
                         ctx.fillText(split[i].toUpperCase(), x, y + (i * lineheight) + 15);
+
+                        ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+                        ctx.rotate(1 / 360);
+                        ctx.fillText(split[i].toUpperCase(), x + 1, y + (i * lineheight) + 15 -1);
+                        ctx.rotate(-1 / 360);
+                        ctx.fillText(split[i].toUpperCase(), x - 1, y + (i * lineheight) + 15 - 1);
                     } else {
                         ctx.font = `60px "Century-Schoolbook"`;
+                        ctx.fillStyle = 'cyan';
+                        ctx.fillText(split[i].toUpperCase(), x + 0.7, y + (i * lineheight));
+                        ctx.fillStyle = 'magenta';
+                        ctx.fillText(split[i].toUpperCase(), x - 0.7, y + (i * lineheight));
+                        ctx.fillStyle = 'white';
                         ctx.fillText(split[i].toUpperCase(), x, y + (i * lineheight));
+
+                        ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+                        ctx.rotate(1 / 360);
+                        ctx.fillText(split[i].toUpperCase(), x + 2, y + (i * lineheight) +1);
+                        ctx.rotate(-1 / 360);
+                        ctx.fillText(split[i].toUpperCase(), x - 2, y + (i * lineheight) -1);
                     }
                 }
                 return ctx
@@ -107,20 +128,39 @@
 
             function drawEpisode(ctx) {
                 const title = document.querySelector("#episode").value;
-                ctx.fillStyle = 'white';
-                ctx.filter = 'blur(.3px) url(#chromatic)';
                 ctx.font = '50px "Helvetica-Condensed-Bold"';
+                ctx.fillStyle = 'cyan';
+                ctx.fillText(title.toUpperCase(), 21, 360);
+                ctx.fillStyle = 'magenta';
+                ctx.fillText(title.toUpperCase(), 19, 360);
+                ctx.fillStyle = 'white';
                 ctx.fillText(title.toUpperCase(), 20, 360);
+
+                ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+                ctx.rotate(1 / 360);
+                ctx.fillText(title.toUpperCase(), 21, 361);
+                ctx.rotate(-1 / 360);
+                ctx.fillText(title.toUpperCase(), 19, 359);
+                
                 return ctx
             }
 
             function drawEpisodeName(ctx) {
                 const title = document.querySelector("#episodeName").value;
-                ctx.fillStyle = 'white';
-                ctx.filter = 'blur(.3px) url(#chromatic)';
                 ctx.font = '40px "TimesNRCondensedBold"';
                 ctx.textAlign = "right";
+                ctx.fillStyle = 'cyan';
+                ctx.fillText(title, 620.7, 450);
+                ctx.fillStyle = 'magenta';
+                ctx.fillText(title, 619.3, 450);
+                ctx.fillStyle = 'white';
                 ctx.fillText(title, 620, 450);
+
+                ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+                ctx.rotate(0.3 / 360);
+                ctx.fillText(title, 621, 451);
+                ctx.rotate(-0.6 / 360);
+                ctx.fillText(title, 619, 449);
                 return ctx
             }
 
